@@ -4,6 +4,12 @@ from django.conf.urls import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
+from NumberArchive.api.resources import MagicNumberResource
+from tastypie.api import Api
+
+v1_api = Api(api_name='v1')
+v1_api.register(MagicNumberResource())
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'tastypie_example.views.home', name='home'),
@@ -14,4 +20,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
+
+    (r'^api/', include(v1_api.urls)),
+
 )
