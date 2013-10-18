@@ -1,3 +1,9 @@
 from django.db import models
 
-# Create your models here.
+
+class MagicNumber(models.Model):
+    title = models.CharField("Title")
+    number = models.IntegerField()
+
+    def __unicode__(self):
+        return self.title
